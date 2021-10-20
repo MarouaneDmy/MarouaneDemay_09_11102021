@@ -16,7 +16,7 @@ export default class {
     new Logout({ document, localStorage, onNavigate })
   }
 
-  handleClickNewBill = e => {
+  handleClickNewBill = (e) => {
     this.onNavigate(ROUTES_PATH['NewBill'])
   }
 
