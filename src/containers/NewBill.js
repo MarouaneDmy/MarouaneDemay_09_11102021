@@ -19,6 +19,14 @@ export default class NewBill {
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
     const filePath = e.target.value.split(/\\/g)
     const fileName = filePath[filePath.length-1]
+    const fileExtension = fileName.substring(fileName.indexOf('.')).toLowerCase()
+    const validExtensions = ['.jpg', '.jpeg', '.png']
+    if (!validExtensions.includes(fileExtension)) {
+      alert('Extension du fichier invalide')
+      this.fileName = null
+      this.fileUrl = null
+      return
+    }
     this.firestore
       .storage
       .ref(`justificatifs/${fileName}`)
@@ -46,9 +54,13 @@ export default class NewBill {
       fileName: this.fileName,
       status: 'pending'
     }
+    if(!bill.fileUrl || !bill.fileName){
+      return
+    }
     this.createBill(bill)
     this.onNavigate(ROUTES_PATH['Bills'])
   }
+
 
   // not need to cover this function by tests
   createBill = (bill) => {

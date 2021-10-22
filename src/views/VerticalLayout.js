@@ -3,7 +3,7 @@ import MailIcon from "../assets/svg/mail.js"
 import DisconnectIcon from "../assets/svg/disconnect.js"
 
 export default (height) => {
-    let user;
+    let user
     user = JSON.parse(localStorage.getItem('user'))
     if (typeof user === 'string') {
       user = JSON.parse(user)
