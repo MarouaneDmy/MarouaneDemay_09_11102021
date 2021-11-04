@@ -49,7 +49,7 @@ export default ({ data: bills, loading, error }) => {
   }
 
   if (bills) {
-    bills.sort((a, b) => new Date(b.date) - new Date(a.date));
+    bills.sort((a, b) => new Date(b.date) - new Date(a.date))
   }
   
   return (`
